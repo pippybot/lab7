@@ -1,4 +1,41 @@
-td, th {
-	border: 1px solid;
-  }
-  
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Styling specific to the table */
+#planets {
+  margin-top: 20px;
+}
+
+#planets th {
+  background-color: #f2f2f2;
+}
+
+#planets td:first-child {
+  font-weight: bold;
+}
+
+#planets img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
