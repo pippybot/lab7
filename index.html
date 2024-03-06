@@ -182,7 +182,7 @@
       $("#planets tr:nth-child(9) td:nth-child(3)").text(lengthOfDay);
     });
     $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html", function(data) {
-    // Parse the HTML data
+      // Parse the HTML data
       var parsedData = $(data);
       // Extract relevant information
       var preContent = parsedData.find("pre").contents();
