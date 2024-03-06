@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Planetary Data & Factoids</title>
+  <link rel="stylesheet" href="images/style.css">
+</head>
+<body>
+  <h1>Planetary Fact Sheet</h1>
+  <table id="planets">
+    <tr>
+      <th></th>
+      <th>Planet 1: Earth</th>
+      <th>Planet 2: Mars</th>
+      <th>Planet 3: Neptune</th>
+      <th>Planet 4: Jupiter</th>
+    </tr>
+    <tr>
+      <td>Images of chosen Planets</td>
+      <td><img src="images/earth.gif" alt="Image of Earth from the given Nasa website"></td>
+      <td><img src="images/mars.gif" alt="Image of Mars from the given Nasa website"></td>
+      <td><img src="images/neptune.gif" alt="Image of Neptune from the given Nasa website"></td>
+      <td><img src="images/jupiter.gif" alt="Image of Jupiter from the given Nasa website"></td>
+    </tr>
+    <tr>
+      <td>Fact #1</td>
+      <td>Mass of Planet 1</td>
+      <td>Mass of Planet 2</td>
+      <td>Mass of Planet 3</td>
+      <td>Mass of Planet 4</td>
+    </tr>
+    <tr>
+      <td>Fact #2</td>
+      <td>Diameter of Planet 1</td>
+      <td>Diameter of Planet 2</td>
+      <td>Diameter of Planet 3</td>
+      <td>Diameter of Planet 4</td>
+    </tr>
+    <tr>
+      <td>Fact #3</td>
+      <td>Density of Planet 1</td>
+      <td>Density of Planet 2</td>
+      <td>Density of Planet 3</td>
+      <td>Density of Planet 4</td>
+    </tr>
+    <tr>
+      <td>Fact #4</td>
+      <td>Gravity of Planet 1</td>
+      <td>Gravity of Planet 2</td>
+      <td>Gravity of Planet 3</td>
+      <td>Gravity of Planet 4</td>
+    </tr>
+    <tr>
+      <td>Fact #5</td>
+      <td>Escape Velocity of Planet 1</td>
+      <td>Escape Velocity of Planet 2</td>
+      <td>Escape Velocity of Planet 3</td>
+      <td>Escape Velocity of Planet 4</td>
+    </tr>
+    <tr>
+      <td>Fact #6</td>
+      <td>Rotation Period (in hours) of Planet 1</td>
+      <td>Rotation Period (in hours) of Planet 2</td>
+      <td>Rotation Period (in hours) of Planet 3</td>
+      <td>Rotation Period (in hours) of Planet 4</td>
+    </tr>
+    <tr>
+      <td>Fact #7</td>
+      <td>Length of Day (in hours) of Planet 1</td>
+      <td>Length of Day (in hours) of Planet 2</td>
+      <td>Length of Day (in hours) of Planet 3</td>
+      <td>Length of Day (in hours) of Planet 4</td>
+    </tr>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Fetching data from the NASA website
+    $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html", function(data) {
+      // Parse the HTML data
+      var parsedData = $(data);
+      // Extract relevant information
+      var mass = parsedData.find("pre#Mass").text();
+      var diameter = parsedData.find("pre#Diameter").text();
+      var density = parsedData.find("pre#Density").text();
+      var gravity = parsedData.find("pre#Gravity").text();
+      var escapeVelocity = parsedData.find("pre#Escape-velocity").text();
+      var rotationPeriod = parsedData.find("pre#Rotation-period").text();
+      var lengthOfDay = parsedData.find("pre#Length-of-day").text();
+      // Populate the table for Earth
+      $("#planets tr:nth-child(3) td:nth-child(1)").text(mass);
+      $("#planets tr:nth-child(4) td:nth-child(1)").text(diameter);
+      $("#planets tr:nth-child(5) td:nth-child(1)").text(density);
+      $("#planets tr:nth-child(6) td:nth-child(1)").text(gravity);
+      $("#planets tr:nth-child(7) td:nth-child(1)").text(escapeVelocity);
+      $("#planets tr:nth-child(8) td:nth-child(1)").text(rotationPeriod);
+      $("#planets tr:nth-child(9) td:nth-child(1)").text(lengthOfDay);
+    });
+    $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html", function(data) {
+      // Parse the HTML data
+      var parsedData = $(data);
+      // Extract relevant information
+      var mass = parsedData.find("pre#Mass").text();
+      var diameter = parsedData.find("pre#Diameter").text();
+      var density = parsedData.find("pre#Density").text();
+      var gravity = parsedData.find("pre#Gravity").text();
+      var escapeVelocity = parsedData.find("pre#Escape-velocity").text();
+      var rotationPeriod = parsedData.find("pre#Rotation-period").text();
+      var lengthOfDay = parsedData.find("pre#Length-of-day").text();
+      // Populate the table for Mars
+      $("#planets tr:nth-child(3) td:nth-child(2)").text(mass); // Mass
+      $("#planets tr:nth-child(4) td:nth-child(2)").text(diameter); // Diameter
+      $("#planets tr:nth-child(5) td:nth-child(2)").text(density); // Density
+      $("#planets tr:nth-child(6) td:nth-child(2)").text(gravity); // Gravity
+      $("#planets tr:nth-child(7) td:nth-child(2)").text(escapeVelocity); // Escape Velocity
+      $("#planets tr:nth-child(8) td:nth-child(2)").text(rotationPeriod); // Rotation Period
+      $("#planets tr:nth-child(9) td:nth-child(2)").text(lengthOfDay); // Length of Day
+    });
+    $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html", function(data) {
+      // Parse the HTML data
+      var parsedData = $(data);
+      // Extract relevant information
+      var mass = parsedData.find("pre#Mass").text();
+      var diameter = parsedData.find("pre#Diameter").text();
+      var density = parsedData.find("pre#Density").text();
+      var gravity = parsedData.find("pre#Gravity").text();
+      var escapeVelocity = parsedData.find("pre#Escape-velocity").text();
+      var rotationPeriod = parsedData.find("pre#Rotation-period").text();
+      var lengthOfDay = parsedData.find("pre#Length-of-day").text();
+      // Populate the table for Neptune
+      $("#planets tr:nth-child(3) td:nth-child(1)").text(mass);
+      $("#planets tr:nth-child(4) td:nth-child(1)").text(diameter);
+      $("#planets tr:nth-child(5) td:nth-child(1)").text(density);
+      $("#planets tr:nth-child(6) td:nth-child(1)").text(gravity);
+      $("#planets tr:nth-child(7) td:nth-child(1)").text(escapeVelocity);
+      $("#planets tr:nth-child(8) td:nth-child(1)").text(rotationPeriod);
+      $("#planets tr:nth-child(9) td:nth-child(1)").text(lengthOfDay);
+    });
+    $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html", function(data) {
+      // Parse the HTML data
+      var parsedData = $(data);
+      // Extract relevant information
+      var mass = parsedData.find("pre#Mass").text();
+      var diameter = parsedData.find("pre#Diameter").text();
+      var density = parsedData.find("pre#Density").text();
+      var gravity = parsedData.find("pre#Gravity").text();
+      var escapeVelocity = parsedData.find("pre#Escape-velocity").text();
+      var rotationPeriod = parsedData.find("pre#Rotation-period").text();
+      var lengthOfDay = parsedData.find("pre#Length-of-day").text();
+      // Populate the table for Earth
+      $("#planets tr:nth-child(3) td:nth-child(4)").text(mass);
+      $("#planets tr:nth-child(4) td:nth-child(4)").text(diameter);
+      $("#planets tr:nth-child(5) td:nth-child(4)").text(density);
+      $("#planets tr:nth-child(6) td:nth-child(4)").text(gravity);
+      $("#planets tr:nth-child(7) td:nth-child(4)").text(escapeVelocity);
+      $("#planets tr:nth-child(8) td:nth-child(4)").text(rotationPeriod);
+      $("#planets tr:nth-child(9) td:nth-child(4)").text(lengthOfDay);
+    });
+  </script>
+</body>
+</html>
