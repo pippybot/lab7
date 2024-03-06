@@ -80,13 +80,17 @@
       // Parse the HTML data
       var parsedData = $(data);
       // Extract relevant information
-      var mass = parsedData.find("pre#Mass").text();
-      var diameter = parsedData.find("pre#Diameter").text();
-      var density = parsedData.find("pre#Density").text();
-      var gravity = parsedData.find("pre#Gravity").text();
-      var escapeVelocity = parsedData.find("pre#Escape-velocity").text();
-      var rotationPeriod = parsedData.find("pre#Rotation-period").text();
-      var lengthOfDay = parsedData.find("pre#Length-of-day").text();
+      var factSheet = parsedData.find("pre").text();
+    
+      // Extracting individual facts
+      var mass = factSheet.match(/Mass \(.*?\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
+      var diameter = factSheet.match(/Equatorial radius \(km\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
+      var density = factSheet.match(/Mean density \(kg\/m<sup>3<\/sup>\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
+      var gravity = factSheet.match(/Surface gravity \(mean\) \(m\/s<sup>2<\/sup>\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
+      var escapeVelocity = factSheet.match(/Escape velocity \(km\/s\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
+      var rotationPeriod = factSheet.match(/Rotation Period \(.*?\) ([\d.]+)/)[1];
+      var lengthOfDay = factSheet.match(/Length of Day \(.*?\) ([\d.]+)/)[1];
+    
       // Populate the table for Earth
       $("#planets tr:nth-child(3) td:nth-child(1)").text(mass);
       $("#planets tr:nth-child(4) td:nth-child(1)").text(diameter);
