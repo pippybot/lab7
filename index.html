@@ -81,10 +81,8 @@
       var parsedData = $(data);
       // Extract relevant information
       var preContent = parsedData.find("pre").contents();
-    
       // Initialize variables to store data
       var mass, diameter, density, gravity, escapeVelocity, rotationPeriod, lengthOfDay;
-    
       // Loop through the content of <pre> element to find required information
       preContent.each(function() {
         var text = $(this).text().trim();
@@ -104,7 +102,6 @@
           lengthOfDay = text.split(/\s+/)[4];
         }
       });
-    
       // Populate the table for Earth
       $("#planets tr:nth-child(3) td:nth-child(1)").text(mass);
       $("#planets tr:nth-child(4) td:nth-child(1)").text(diameter);
@@ -117,35 +114,65 @@
     $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html", function(data) {
       // Parse the HTML data
       var parsedData = $(data);
-      // Extract relevant information for Mars
-      var mass = parsedData.find("#mass").text();
-      var diameter = parsedData.find("#diameter").text();
-      var density = parsedData.find("#density").text();
-      var gravity = parsedData.find("#gravity").text();
-      var escapeVelocity = parsedData.find("#escape-velocity").text();
-      var rotationPeriod = parsedData.find("#rotation-period").text();
-      var lengthOfDay = parsedData.find("#length-of-day").text();
+      // Extract relevant information
+      var preContent = parsedData.find("pre").contents();
+      // Initialize variables to store data
+      var mass, diameter, density, gravity, escapeVelocity, rotationPeriod, lengthOfDay;
+      // Loop through the content of <pre> element to find required information
+      preContent.each(function() {
+        var text = $(this).text().trim();
+        if (text.includes("Mass")) {
+          mass = text.split(/\s+/)[1];
+        } else if (text.includes("Equatorial radius")) {
+          diameter = text.split(/\s+/)[3];
+        } else if (text.includes("Mean density")) {
+          density = text.split(/\s+/)[3];
+        } else if (text.includes("Surface gravity")) {
+          gravity = text.split(/\s+/)[4];
+        } else if (text.includes("Escape velocity")) {
+          escapeVelocity = text.split(/\s+/)[3];
+        } else if (text.includes("Rotation Period")) {
+          rotationPeriod = text.split(/\s+/)[3];
+        } else if (text.includes("Length of Day")) {
+          lengthOfDay = text.split(/\s+/)[4];
+        }
+      });
       // Populate the table for Mars
-      $("#planets tr:nth-child(3) td:nth-child(2)").text(mass); // Mass
-      $("#planets tr:nth-child(4) td:nth-child(2)").text(diameter); // Diameter
-      $("#planets tr:nth-child(5) td:nth-child(2)").text(density); // Density
-      $("#planets tr:nth-child(6) td:nth-child(2)").text(gravity); // Gravity
-      $("#planets tr:nth-child(7) td:nth-child(2)").text(escapeVelocity); // Escape Velocity
-      $("#planets tr:nth-child(8) td:nth-child(2)").text(rotationPeriod); // Rotation Period
-      $("#planets tr:nth-child(9) td:nth-child(2)").text(lengthOfDay); // Length of Day
+      $("#planets tr:nth-child(3) td:nth-child(2)").text(mass);
+      $("#planets tr:nth-child(4) td:nth-child(2)").text(diameter);
+      $("#planets tr:nth-child(5) td:nth-child(2)").text(density);
+      $("#planets tr:nth-child(6) td:nth-child(2)").text(gravity);
+      $("#planets tr:nth-child(7) td:nth-child(2)").text(escapeVelocity);
+      $("#planets tr:nth-child(8) td:nth-child(2)").text(rotationPeriod);
+      $("#planets tr:nth-child(9) td:nth-child(2)").text(lengthOfDay);
     });
     $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html", function(data) {
       // Parse the HTML data
       var parsedData = $(data);
       // Extract relevant information
-      var mass = parsedData.find("#mass").text();
-      var diameter = parsedData.find("#diameter").text();
-      var density = parsedData.find("#density").text();
-      var gravity = parsedData.find("#gravity").text();
-      var escapeVelocity = parsedData.find("#escape-velocity").text();
-      var rotationPeriod = parsedData.find("#rotation-period").text();
-      var lengthOfDay = parsedData.find("#length-of-day").text();
-      // Populate the table for Earth
+      var preContent = parsedData.find("pre").contents();
+      // Initialize variables to store data
+      var mass, diameter, density, gravity, escapeVelocity, rotationPeriod, lengthOfDay;
+      // Loop through the content of <pre> element to find required information
+      preContent.each(function() {
+        var text = $(this).text().trim();
+        if (text.includes("Mass")) {
+          mass = text.split(/\s+/)[1];
+        } else if (text.includes("Equatorial radius")) {
+          diameter = text.split(/\s+/)[3];
+        } else if (text.includes("Mean density")) {
+          density = text.split(/\s+/)[3];
+        } else if (text.includes("Surface gravity")) {
+          gravity = text.split(/\s+/)[4];
+        } else if (text.includes("Escape velocity")) {
+          escapeVelocity = text.split(/\s+/)[3];
+        } else if (text.includes("Rotation Period")) {
+          rotationPeriod = text.split(/\s+/)[3];
+        } else if (text.includes("Length of Day")) {
+          lengthOfDay = text.split(/\s+/)[4];
+        }
+      });
+      // Populate the table for Neptune
       $("#planets tr:nth-child(3) td:nth-child(3)").text(mass);
       $("#planets tr:nth-child(4) td:nth-child(3)").text(diameter);
       $("#planets tr:nth-child(5) td:nth-child(3)").text(density);
@@ -154,18 +181,32 @@
       $("#planets tr:nth-child(8) td:nth-child(3)").text(rotationPeriod);
       $("#planets tr:nth-child(9) td:nth-child(3)").text(lengthOfDay);
     });
-    $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html", function(data) {
-      // Parse the HTML data
+    // Parse the HTML data
       var parsedData = $(data);
       // Extract relevant information
-      var mass = parsedData.find("#mass").text();
-      var diameter = parsedData.find("#diameter").text();
-      var density = parsedData.find("#density").text();
-      var gravity = parsedData.find("#gravity").text();
-      var escapeVelocity = parsedData.find("#escape-velocity").text();
-      var rotationPeriod = parsedData.find("#rotation-period").text();
-      var lengthOfDay = parsedData.find("#length-of-day").text();
-      // Populate the table for Earth
+      var preContent = parsedData.find("pre").contents();
+      // Initialize variables to store data
+      var mass, diameter, density, gravity, escapeVelocity, rotationPeriod, lengthOfDay;
+      // Loop through the content of <pre> element to find required information
+      preContent.each(function() {
+        var text = $(this).text().trim();
+        if (text.includes("Mass")) {
+          mass = text.split(/\s+/)[1];
+        } else if (text.includes("Equatorial radius")) {
+          diameter = text.split(/\s+/)[3];
+        } else if (text.includes("Mean density")) {
+          density = text.split(/\s+/)[3];
+        } else if (text.includes("Surface gravity")) {
+          gravity = text.split(/\s+/)[4];
+        } else if (text.includes("Escape velocity")) {
+          escapeVelocity = text.split(/\s+/)[3];
+        } else if (text.includes("Rotation Period")) {
+          rotationPeriod = text.split(/\s+/)[3];
+        } else if (text.includes("Length of Day")) {
+          lengthOfDay = text.split(/\s+/)[4];
+        }
+      });
+      // Populate the table for Jupiter
       $("#planets tr:nth-child(3) td:nth-child(4)").text(mass);
       $("#planets tr:nth-child(4) td:nth-child(4)").text(diameter);
       $("#planets tr:nth-child(5) td:nth-child(4)").text(density);
