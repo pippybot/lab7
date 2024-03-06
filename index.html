@@ -80,13 +80,13 @@
       // Parse the HTML data
       var parsedData = $(data);
       // Extract relevant information
-      var mass = parsedData.find("pre#mass").text();
-      var diameter = parsedData.find("pre#diameter").text();
-      var density = parsedData.find("pre#density").text();
-      var gravity = parsedData.find("pre#gravity").text();
-      var escapeVelocity = parsedData.find("pre#escape-velocity").text();
-      var rotationPeriod = parsedData.find("pre#rotation-period").text();
-      var lengthOfDay = parsedData.find("pre#length-of-day").text();
+      var mass = parsedData.find("pre#Mass").text();
+      var diameter = parsedData.find("pre#Diameter").text();
+      var density = parsedData.find("pre#Density").text();
+      var gravity = parsedData.find("pre#Gravity").text();
+      var escapeVelocity = parsedData.find("pre#Escape-velocity").text();
+      var rotationPeriod = parsedData.find("pre#Rotation-period").text();
+      var lengthOfDay = parsedData.find("pre#Length-of-day").text();
       // Populate the table for Earth
       $("#planets tr:nth-child(3) td:nth-child(1)").text(mass);
       $("#planets tr:nth-child(4) td:nth-child(1)").text(diameter);
