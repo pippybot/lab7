@@ -16,7 +16,7 @@
       <th>Planet 4</th>
     </tr>
     <tr>
-      <td>Images of chosen Planets</td>
+      <td>Images of Chosen Planets</td>
       <td><img src="images/earth.gif" alt="Image of Earth from the given Nasa website"></td>
       <td><img src="images/mars.gif" alt="Image of Mars from the given Nasa website"></td>
       <td><img src="images/neptune.gif" alt="Image of Neptune from the given Nasa website"></td>
@@ -80,16 +80,30 @@
       // Parse the HTML data
       var parsedData = $(data);
       // Extract relevant information
-      var factSheet = parsedData.find("pre").text();
+      var preContent = parsedData.find("pre").contents();
     
-      // Extracting individual facts
-      var mass = factSheet.match(/Mass \(.*?\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
-      var diameter = factSheet.match(/Equatorial radius \(km\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
-      var density = factSheet.match(/Mean density \(kg\/m<sup>3<\/sup>\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
-      var gravity = factSheet.match(/Surface gravity \(mean\) \(m\/s<sup>2<\/sup>\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
-      var escapeVelocity = factSheet.match(/Escape velocity \(km\/s\) ([-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)/)[1];
-      var rotationPeriod = factSheet.match(/Rotation Period \(.*?\) ([\d.]+)/)[1];
-      var lengthOfDay = factSheet.match(/Length of Day \(.*?\) ([\d.]+)/)[1];
+      // Initialize variables to store data
+      var mass, diameter, density, gravity, escapeVelocity, rotationPeriod, lengthOfDay;
+    
+      // Loop through the content of <pre> element to find required information
+      preContent.each(function() {
+        var text = $(this).text().trim();
+        if (text.includes("Mass")) {
+          mass = text.split(/\s+/)[1];
+        } else if (text.includes("Equatorial radius")) {
+          diameter = text.split(/\s+/)[3];
+        } else if (text.includes("Mean density")) {
+          density = text.split(/\s+/)[3];
+        } else if (text.includes("Surface gravity")) {
+          gravity = text.split(/\s+/)[4];
+        } else if (text.includes("Escape velocity")) {
+          escapeVelocity = text.split(/\s+/)[3];
+        } else if (text.includes("Rotation Period")) {
+          rotationPeriod = text.split(/\s+/)[3];
+        } else if (text.includes("Length of Day")) {
+          lengthOfDay = text.split(/\s+/)[4];
+        }
+      });
     
       // Populate the table for Earth
       $("#planets tr:nth-child(3) td:nth-child(1)").text(mass);
