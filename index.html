@@ -128,13 +128,13 @@
       var rotationPeriod = parsedData.find("pre#Rotation-period").text();
       var lengthOfDay = parsedData.find("pre#Length-of-day").text();
       // Populate the table for Neptune
-      $("#planets tr:nth-child(3) td:nth-child(1)").text(mass);
-      $("#planets tr:nth-child(4) td:nth-child(1)").text(diameter);
-      $("#planets tr:nth-child(5) td:nth-child(1)").text(density);
-      $("#planets tr:nth-child(6) td:nth-child(1)").text(gravity);
-      $("#planets tr:nth-child(7) td:nth-child(1)").text(escapeVelocity);
-      $("#planets tr:nth-child(8) td:nth-child(1)").text(rotationPeriod);
-      $("#planets tr:nth-child(9) td:nth-child(1)").text(lengthOfDay);
+      $("#planets tr:nth-child(3) td:nth-child(3)").text(mass);
+      $("#planets tr:nth-child(4) td:nth-child(3)").text(diameter);
+      $("#planets tr:nth-child(5) td:nth-child(3)").text(density);
+      $("#planets tr:nth-child(6) td:nth-child(3)").text(gravity);
+      $("#planets tr:nth-child(7) td:nth-child(3)").text(escapeVelocity);
+      $("#planets tr:nth-child(8) td:nth-child(3)").text(rotationPeriod);
+      $("#planets tr:nth-child(9) td:nth-child(3)").text(lengthOfDay);
     });
     $.get("https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html", function(data) {
       // Parse the HTML data
